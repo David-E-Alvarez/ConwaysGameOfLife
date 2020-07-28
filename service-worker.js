@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/ConwaysGameOfLife/precache-manifest.13797a506e128b605b827ff4e49ca384.js"
+  "/ConwaysGameOfLife/precache-manifest.2f8aba35670d9248527f975aa5fcb566.js"
 );
 
 self.addEventListener('message', (event) => {
