@@ -4,6 +4,12 @@ import './index.css'
 import Board from './Board.js'
 
 class App extends Component {
+  constructor(){
+    super();
+    this.state = {
+      generation: 0,
+    }
+  }
   render() {
     return (
       <div className="App">
@@ -19,6 +25,7 @@ class App extends Component {
           <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life#Rules">Wikipedia</a>
         </section>
         <Board/>
+        <h2>Generations: {this.state.generation}</h2>
       </div>
     )
   }

@@ -1,7 +1,11 @@
 import React from 'react'
 
 const Board = () => {
-    return <h1>Board.js</h1>
+    return(
+        <section>
+            <h1>One big bad @$$ Conway game of life board</h1>
+        </section>
+    )
 }
 
 export default Board
