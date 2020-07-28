@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
-import './Board.js'
 import Board from './Board.js'
 
 class App extends Component {
