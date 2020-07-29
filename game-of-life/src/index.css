@@ -1,0 +1,19 @@
+table {
+    margin: 0 auto 20px auto;
+    border-collapse: collapse;
+    background-color: red;
+}
+
+td {
+    width: 10px;
+    height: 10px;
+    border: 1px solid yellow;
+}
+
+.alive {
+    background-color: red;
+}
+
+.dead{
+    background-color: pink;
+}
