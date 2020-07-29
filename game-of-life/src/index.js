@@ -1,15 +1,45 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
-import Board from './Board.js'
+
+
+
+const Board = (props) => {
+  {/*rows_array is to populate board */}
+  {/*cell_id is to identify each cell */}
+  {/*cell_class in Cell component is to tell if a cell is on or off */}
+  {/* */}
+  var rows_array = [];
+  var cell_class = "";
+  for(var i = 0; i < props.rows; i++){
+    for(var j = 0; j < props.columns; j++){
+      let cell_id = i + "_" + j;
+      cell_class = props.empty_board ? "cell on":"cell off";
+      
+    }
+  }
+  return(
+    <div className="board">
+      {rows_array}
+    </div>
+  );
+}
 
 class App extends Component {
   constructor(){
     super();
+    
+    this.speed = 100;{/*how fast program runs */}
+    {/*rows and columns for grid; will be referenced for creation of state */}
+    {/*"emptyGrid makes initil empty grid" it is a 2d array to represent board*/}
+    this.rows = 25;
+    this.columns = 25;
     this.state = {
       generation: 0,
+      empty_board: Array(this.rows).fill().map(() => Array(this.columns).fill(false)),
     }
   }
+
   render() {
     return (
       <div className="App">
@@ -24,7 +54,11 @@ class App extends Component {
           </ul>
           <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life#Rules">Wikipedia</a>
         </section>
-        <Board/>
+        <Board 
+          board={this.state.empty_board}
+          rows={this.rows}
+          cols={this.columns}
+        />
         <h2>Generations: {this.state.generation}</h2>
       </div>
     )
