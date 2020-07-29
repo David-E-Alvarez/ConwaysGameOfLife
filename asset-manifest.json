@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/ConwaysGameOfLife/static/css/main.9447384d.chunk.css",
-    "main.js": "/ConwaysGameOfLife/static/js/main.09527637.chunk.js",
-    "main.js.map": "/ConwaysGameOfLife/static/js/main.09527637.chunk.js.map",
+    "main.css": "/ConwaysGameOfLife/static/css/main.7e43bf92.chunk.css",
+    "main.js": "/ConwaysGameOfLife/static/js/main.c3c048b7.chunk.js",
+    "main.js.map": "/ConwaysGameOfLife/static/js/main.c3c048b7.chunk.js.map",
     "runtime-main.js": "/ConwaysGameOfLife/static/js/runtime-main.b355990a.js",
     "runtime-main.js.map": "/ConwaysGameOfLife/static/js/runtime-main.b355990a.js.map",
-    "static/js/2.36450c9f.chunk.js": "/ConwaysGameOfLife/static/js/2.36450c9f.chunk.js",
-    "static/js/2.36450c9f.chunk.js.map": "/ConwaysGameOfLife/static/js/2.36450c9f.chunk.js.map",
+    "static/js/2.b08c8b92.chunk.js": "/ConwaysGameOfLife/static/js/2.b08c8b92.chunk.js",
+    "static/js/2.b08c8b92.chunk.js.map": "/ConwaysGameOfLife/static/js/2.b08c8b92.chunk.js.map",
     "index.html": "/ConwaysGameOfLife/index.html",
-    "precache-manifest.2f8aba35670d9248527f975aa5fcb566.js": "/ConwaysGameOfLife/precache-manifest.2f8aba35670d9248527f975aa5fcb566.js",
+    "precache-manifest.01d3b39d310f1af4aad4bbc0402a60ff.js": "/ConwaysGameOfLife/precache-manifest.01d3b39d310f1af4aad4bbc0402a60ff.js",
     "service-worker.js": "/ConwaysGameOfLife/service-worker.js",
-    "static/css/main.9447384d.chunk.css.map": "/ConwaysGameOfLife/static/css/main.9447384d.chunk.css.map",
-    "static/js/2.36450c9f.chunk.js.LICENSE.txt": "/ConwaysGameOfLife/static/js/2.36450c9f.chunk.js.LICENSE.txt"
+    "static/css/main.7e43bf92.chunk.css.map": "/ConwaysGameOfLife/static/css/main.7e43bf92.chunk.css.map",
+    "static/js/2.b08c8b92.chunk.js.LICENSE.txt": "/ConwaysGameOfLife/static/js/2.b08c8b92.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.b355990a.js",
-    "static/js/2.36450c9f.chunk.js",
-    "static/css/main.9447384d.chunk.css",
-    "static/js/main.09527637.chunk.js"
+    "static/js/2.b08c8b92.chunk.js",
+    "static/css/main.7e43bf92.chunk.css",
+    "static/js/main.c3c048b7.chunk.js"
   ]
 }
