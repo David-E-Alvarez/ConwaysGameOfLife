@@ -105,6 +105,12 @@ class App extends Component {
           <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life#Rules">Wikipedia</a>
         </section>
         <Board board_status={board_status} toggle_cell={this.handle_toggle_cell_status}/>
+        <div>
+          {`Generation: ${generation}`}
+        </div>
+        <div>
+          {this.buttons()}
+        </div>
       </div>
     )
   }
