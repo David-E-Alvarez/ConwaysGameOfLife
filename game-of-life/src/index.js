@@ -3,15 +3,15 @@ import ReactDOM from 'react-dom'
 import './index.css'
 
 //grid dimensions
-const rows = 25;
-const columns = 25;
+const rows = 40;
+const columns = 60;
 
 //initial board
 const new_board = (status_of_cell = () => false) => {//sets every cell on board to false
   const grid = [];
-  for(var i = 0; i< rows; i++){
+  for(let i = 0; i< rows; i++){
     grid[i] = [];
-    for(var j = 0; j < columns; j++){
+    for(let j = 0; j < columns; j++){
       grid[i][j] = status_of_cell()
     }
   }
@@ -23,9 +23,9 @@ const new_board = (status_of_cell = () => false) => {//sets every cell on board 
 const Board = ({board_status, toggle_cell}) =>{
   const handleClick = (i,j) => toggle_cell(i,j);
   const table_rows = [];
-  for(var i = 0; i < rows; i++){
+  for(let i = 0; i < rows; i++){
     const table_data = [];
-    for(var j = 0; j < columns; j++){
+    for(let j = 0; j < columns; j++){
       table_data.push(
         <td
           key={`${i},${j}`}
@@ -81,6 +81,45 @@ class App extends Component {
     }))
   }
 
+  //method to handle steps
+  handle_step = () => {
+    const next_step = prev_state =>{
+      const board_status = prev_state.board_status;
+      const board_copy = JSON.parse(JSON.stringify(board_status));
+      //function to calcualte neighbors and updates individual cell status and return cloned board status
+      const calc_neighbors = (row,col) => {
+        const calc_neighbors = [[-1, -1], [-1, 0], [-1, 1], [0, 1], [1, 1], [1, 0], [1, -1], [0, -1]];
+        return calc_neighbors.reduce((true_neighbors, neighbor) => {
+          const x = row + neighbor[0];
+          const y = col + neighbor[1];
+          const is_neighbor_on_grid = (x >= 0 && x < rows && y >= 0 && y < columns);
+          if(true_neighbors < 4 && is_neighbor_on_grid && board_status[x][y]){
+            return true_neighbors + 1;
+          }else{
+            return true_neighbors;
+          }
+        },0);
+      };
+      //update cloned board status
+      for(let i = 0; i < rows; i++){
+        for(let j = 0; j < columns; j++){
+          const true_neighbors_total = calc_neighbors(i,j);
+          if(!board_status[i][j]){
+            if(true_neighbors_total === 3) board_copy[i][j] = true;
+          }else{
+            if(true_neighbors_total < 2 || true_neighbors_total > 3) board_copy[i][j] = false;
+          }
+        }
+      }
+      return board_copy;
+    };
+    //iterate
+    this.setState(prev_state =>({
+      board_status: next_step(prev_state),
+      generation: prev_state.generation + 1
+    }));
+  }
+
   //stop/run state
   handle_start = () => {
 		this.setState({ isGameRunning: true });
@@ -88,7 +127,14 @@ class App extends Component {
 
 	handle_stop = () => {
 		this.setState({ isGameRunning: false });
-	}
+  }
+  //for stop and start
+  componentDidUpdate(prev_props,prev_state){
+    const {isGameRunning} = this.state;
+    const game_started = !prev_state.isGameRunning && isGameRunning;
+    const game_stopped = prev_state.isGameRunning && !isGameRunning;
+  }
+
   render() {
     const {board_status,isGameRunning,generation} = this.state;
     return (
@@ -110,6 +156,9 @@ class App extends Component {
         </div>
         <div>
           {this.buttons()}
+          <button type='button' disabled={isGameRunning} onClick={this.handle_step}>Step</button>
+          <button type='button' onClick={this.clear_board}>Clear Board</button>
+					<button type='button' onClick={this.new_board_instance}>New Board</button>
         </div>
       </div>
     )
