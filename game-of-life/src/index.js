@@ -46,7 +46,7 @@ class App extends Component {
     board_status: new_board(),
     generation: 0,
     isGameRunning: false,
-    speed: 500
+    speed: 25
   };
   //function for start/stop buttons
   buttons = () => {
