@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom'
 import './index.css'
 
 //grid dimensions
-const rows = 40;
-const columns = 60;
+const rows = 25;
+const columns = 35;
 
 //initial board
 const new_board = (status_of_cell = () => false) => {//sets every cell on board to false
