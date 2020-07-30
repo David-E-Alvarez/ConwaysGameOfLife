@@ -46,6 +46,7 @@ class App extends Component {
     board_status: new_board(),
     generation: 0,
     isGameRunning: false,
+    speed: 500
   };
   //function for start/stop buttons
   buttons = () => {
@@ -130,9 +131,18 @@ class App extends Component {
   }
   //for stop and start
   componentDidUpdate(prev_props,prev_state){
-    const {isGameRunning} = this.state;
+    const {isGameRunning, speed} = this.state;
+    const iterate = prev_state.speed !== speed;
     const game_started = !prev_state.isGameRunning && isGameRunning;
     const game_stopped = prev_state.isGameRunning && !isGameRunning;
+    if((isGameRunning && iterate)||game_stopped){
+      clearInterval(this.timerID)
+    }
+    if((isGameRunning && iterate)||game_started){
+      this.timerID = setInterval(()=>{
+        this.handle_step();
+      },iterate)
+    }
   }
 
   render() {
