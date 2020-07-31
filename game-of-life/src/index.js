@@ -48,6 +48,32 @@ const random_config = (true_or_false = () => Math.random() < 0.5) => {
   }
   return grid;
 }
+//glider gun config
+const penta_config = (status_of_cell = () => false) => {//sets every cell on board to false
+  const grid = [];
+  for(let i = 0; i< rows; i++){
+    grid[i] = [];
+    for(let j = 0; j < columns; j++){
+      grid[i][j] = status_of_cell()
+    }
+  }
+  //this makes grids true to make glider shape
+  grid[12][13] = true;
+  grid[12][14] = true;
+  grid[11][15] = true;
+  grid[13][15] = true;
+  grid[12][16] = true;
+  grid[12][17] = true;
+  grid[12][18] = true;
+  grid[12][19] = true;
+  grid[11][20] = true;
+  grid[13][20] = true;
+  grid[12][21] = true;
+  grid[12][22] = true;
+
+  return grid;
+
+};
 
 //board component
 const Board = ({board_status, toggle_cell}) =>{
@@ -104,6 +130,13 @@ class App extends Component {
   random_func = () => {
     this.setState({
       board_status: random_config(),
+      generation: 0
+    })
+  }
+  //pentadecathlon
+  pentadecathlon = () => {
+    this.setState({
+      board_status: penta_config(),
       generation: 0
     })
   }
@@ -209,6 +242,7 @@ class App extends Component {
           <br></br><label>preset configurations: </label>
           <button type='button' onClick={this.glider_func}>Glider</button>
           <button type='button' onClick={this.random_func}>Random</button>
+          <button type='button' onClick={this.pentadecathlon}>Pentadecathlon</button>
         </div>
       </div>
     )
