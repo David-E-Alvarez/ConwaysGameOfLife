@@ -76,7 +76,7 @@ class App extends Component {
     board_status: new_board(),
     generation: 0,
     isGameRunning: false,
-    speed: 25
+    speed: 25,
   };
   //function for start/stop buttons
   buttons = () => {
@@ -92,13 +92,7 @@ class App extends Component {
       generation: 0
     });
   }
-  //new board
-  new_board_instance = () => {
-    this.setState({
-      board_status: new_board(),
-      generation:0
-    });
-  }
+ 
   //glider that calls function to configure glider gun
   glider_func = () => {
     this.setState({
@@ -193,7 +187,7 @@ class App extends Component {
     const {board_status,isGameRunning,generation} = this.state;
     return (
       <div className="App">
-        <h1>Conway's Game of Life</h1>
+      <h1>Conway's Game of Life</h1>      
         <section>
           <h5>Rules:</h5>
           <ul>
@@ -212,7 +206,6 @@ class App extends Component {
           {this.buttons()}
           <button type='button' disabled={isGameRunning} onClick={this.handle_step}>Step</button>
           <button type='button' onClick={this.clear_board}>Clear Board</button>
-					<button type='button' onClick={this.new_board_instance}>New Board</button>
           <br></br><label>preset configurations: </label>
           <button type='button' onClick={this.glider_func}>Glider</button>
           <button type='button' onClick={this.random_func}>Random</button>
