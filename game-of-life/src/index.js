@@ -37,6 +37,17 @@ const glider_gun_config = (status_of_cell = () => false) => {//sets every cell o
   return grid;
 
 };
+//random config
+const random_config = (true_or_false = () => Math.random() < 0.5) => {
+  const grid = [];
+  for(let i = 0; i< rows; i++){
+    grid[i] = [];
+    for(let j = 0; j < columns; j++){
+      grid[i][j] = true_or_false()
+    }
+  }
+  return grid;
+}
 
 //board component
 const Board = ({board_status, toggle_cell}) =>{
@@ -95,7 +106,13 @@ class App extends Component {
       generation: 0
     })
   }
-  //glider gun configuration
+  //random configuration
+  random_func = () => {
+    this.setState({
+      board_status: random_config(),
+      generation: 0
+    })
+  }
 
   //handle cell toggling
   handle_toggle_cell_status = (i,j) => {
@@ -198,6 +215,7 @@ class App extends Component {
 					<button type='button' onClick={this.new_board_instance}>New Board</button>
           <br></br><label>preset configurations: </label>
           <button type='button' onClick={this.glider_func}>Glider</button>
+          <button type='button' onClick={this.random_func}>Random</button>
         </div>
       </div>
     )
