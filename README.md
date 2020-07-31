@@ -1,4 +1,5 @@
 # ConwaysGameOfLife
+https://david-e-alvarez.github.io/ConwaysGameOfLife/
 Lambda CS Build Week 1
 sources I used:
 1.) https://www.freecodecamp.org/news/coding-the-game-of-life-with-react-7de2385b7356/
