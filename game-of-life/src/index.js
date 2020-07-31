@@ -18,6 +18,25 @@ const new_board = (status_of_cell = () => false) => {//sets every cell on board 
   return grid;
 
 };
+//glider gun config
+const glider_gun_config = (status_of_cell = () => false) => {//sets every cell on board to false
+  const grid = [];
+  for(let i = 0; i< rows; i++){
+    grid[i] = [];
+    for(let j = 0; j < columns; j++){
+      grid[i][j] = status_of_cell()
+    }
+  }
+  //this makes grids true to make glider shape
+  grid[0][1] = true;
+  grid[2][0] = true;
+  grid[2][1] = true;
+  grid[2][2] = true;
+  grid[1][2] = true;
+
+  return grid;
+
+};
 
 //board component
 const Board = ({board_status, toggle_cell}) =>{
@@ -69,6 +88,14 @@ class App extends Component {
       generation:0
     });
   }
+  //glider that calls function to configure glider gun
+  glider_func = () => {
+    this.setState({
+      board_status: glider_gun_config(),
+      generation: 0
+    })
+  }
+  //glider gun configuration
 
   //handle cell toggling
   handle_toggle_cell_status = (i,j) => {
@@ -169,6 +196,8 @@ class App extends Component {
           <button type='button' disabled={isGameRunning} onClick={this.handle_step}>Step</button>
           <button type='button' onClick={this.clear_board}>Clear Board</button>
 					<button type='button' onClick={this.new_board_instance}>New Board</button>
+          <br></br><label>preset configurations: </label>
+          <button type='button' onClick={this.glider_func}>Glider</button>
         </div>
       </div>
     )
